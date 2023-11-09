@@ -17,7 +17,7 @@ class DataHelper {
                 "that's a tall boi",
                 "New York, NY, USA",
                 "P&G",
-                true,
+                "Done",
                 userImages[0]
             )
         )

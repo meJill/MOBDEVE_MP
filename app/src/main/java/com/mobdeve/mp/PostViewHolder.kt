@@ -32,14 +32,15 @@ class PostViewHolder(itemView: View): ViewHolder(itemView) {
     private val userimage: ImageView = itemView.findViewById(R.id.accountImageIv)
     private val task: TextView = itemView.findViewById(R.id.taskView)
     private val status:TextView = itemView.findViewById(R.id.Status)
+    private val accountImageIv: ImageView = itemView.findViewById(R.id.accountImageIv)
 
     fun bindData(post: PostModel){
         reqs.text = post.requirements
         phonenumber.text = post.phonenumber
         email.text = post.email
         companyname.text = post.companyname
-        task.text = post.tasks
         status.text = post.status
+        accountImageIv.setImageResource(post.userImageId)
 
         if(post.status == "Done"){
 //            button.setImageResource(R.drawable.heart_one)

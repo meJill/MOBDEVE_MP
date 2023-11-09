@@ -7,5 +7,5 @@ class PostModel (
     var companyname: String,
     val status: String,
     val userImageId: Int,
-    val tasks: String
+
 )
