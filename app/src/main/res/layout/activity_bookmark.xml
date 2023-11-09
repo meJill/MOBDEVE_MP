@@ -27,14 +27,14 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/taskView"
                 android:layout_width="149dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Task" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/company_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

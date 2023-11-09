@@ -1,6 +1,7 @@
 package com.mobdeve.act1.ferrer.fakeadex
 
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -23,42 +24,39 @@ var imageId = imageId
 
 class PostViewHolder(itemView: View): ViewHolder(itemView) {
 
-    private val reqs: TextView = itemView.findViewById(R.id.textView)
-    private val uname: TextView = itemView.findViewById(R.id.username)
-    private val loc: TextView = itemView.findViewById(R.id.location)
-    private val mainimg: ImageView = itemView.findViewById(R.id.mainpicture)
-    private val button: ImageView = itemView.findViewById(R.id.button)
-    private val uname2: TextView = itemView.findViewById(R.id.username2)
-    private val desc: TextView = itemView.findViewById(R.id.description)
-    private val date: TextView = itemView.findViewById(R.id.date)
-
-
+    private val reqs: TextView = itemView.findViewById(R.id.jobs)
+    private val phonenumber: TextView = itemView.findViewById(R.id.phone_number)
+    private val email: TextView = itemView.findViewById(R.id.email)
+    private val companyname: TextView = itemView.findViewById(R.id.company_name)
+//    private val status: Boolean = (R.id.button)
+    private val userimage: ImageView = itemView.findViewById(R.id.accountImageIv)
+    private val task: TextView = itemView.findViewById(R.id.taskView)
+    private val status:TextView = itemView.findViewById(R.id.Status)
 
     fun bindData(post: PostModel){
-        dp.setImageResource(post.userImageId)
-        uname.text = post.username
-        loc.text = post.location
-        mainimg.setImageResource(post.imageId)
-        uname2.text = post.username
-        desc.text = post.caption
-        date.text = post.datePosted
+        reqs.text = post.requirements
+        phonenumber.text = post.phonenumber
+        email.text = post.email
+        companyname.text = post.companyname
+        task.text = post.tasks
+        status.text = post.status
 
-        if(post.liked == true){
-            button.setImageResource(R.drawable.heart_one)
+        if(post.status == "Done"){
+//            button.setImageResource(R.drawable.heart_one)
         }
         else{
-            button.setImageResource(R.drawable.heart)
+//            button.setImageResource(R.drawable.heart)
         }
 
-        val check = post.liked
-
-        button.setOnClickListener{
-            post.liked = !post.liked
-            if (post.liked) {
-                button.setImageResource(R.drawable.heart_one)
-            } else {
-                button.setImageResource(R.drawable.heart)
-            }}
+//        val check = post.liked
+//
+//        button.setOnClickListener{
+//            post.liked = !post.liked
+//            if (post.liked) {
+//                button.setImageResource(R.drawable.heart_one)
+//            } else {
+//                button.setImageResource(R.drawable.heart)
+//            }}
 
     }
 

@@ -5,6 +5,7 @@ class PostModel (
     val phonenumber: String?,
     val email: String,
     var companyname: String,
-    val status: Boolean,
-    val userImageId: Int
+    val status: String,
+    val userImageId: Int,
+    val tasks: String
 )
