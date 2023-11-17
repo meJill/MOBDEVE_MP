@@ -11,7 +11,7 @@ class MyAdapter(private val data: ArrayList<PostModel>) : RecyclerView.Adapter<P
 
         val infalter = LayoutInflater.from(parent.context)
 
-        val view = infalter.inflate(R.layout.horizontal_layout, parent, false)
+        val view = infalter.inflate(R.layout.vertical_layout, parent, false)
 
         return PostViewHolder(view)
     }

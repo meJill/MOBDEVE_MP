@@ -75,10 +75,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="SELECT IMAGE"
-        app:layout_constraintTop_toBottomOf="@+id/tempImageIv"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorLink="#FF9696"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tempImageIv" />
 
     <Button
         android:id="@+id/addBtn"

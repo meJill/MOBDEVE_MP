@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799381527760",
+    "project_id": "mp-practicum",
+    "storage_bucket": "mp-practicum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799381527760:android:d5b1a15e18f14caeb012d5",
+        "android_client_info": {
+          "package_name": "com.mobdeve.mp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZLQIKFTNSaAR7CisFlgQvooPp9rDoUMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

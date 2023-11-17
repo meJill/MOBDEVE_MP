@@ -3,7 +3,7 @@ package com.mobdeve.mp
 class DataHelper {
     companion object{
     fun initializeData(): ArrayList<PostModel> {
-        val usernames = arrayOf("Wonderer", "JustMe", "TravelingNomad", "WelcomeToMyLife")
+        val company_name = arrayOf("P&G", "JJ", "Uniliver", "Canon")
         val userImages = intArrayOf(
             R.drawable.person1,
             R.drawable.person2,
@@ -16,7 +16,7 @@ class DataHelper {
                 "Graphics Designer, IT Manager",
                 "that's a tall boi",
                 "New York, NY, USA",
-                "P&G",
+                company_name[0],
                 "Done",
                 userImages[0]
             )
