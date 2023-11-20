@@ -30,8 +30,8 @@ class PostViewHolder(itemView: View): ViewHolder(itemView) {
     private val companyname: TextView = itemView.findViewById(R.id.company_name)
 //    private val status: Boolean = (R.id.button)
     private val userimage: ImageView = itemView.findViewById(R.id.accountImageIv)
-    private val task: TextView = itemView.findViewById(R.id.taskView)
-    private val status:TextView = itemView.findViewById(R.id.Status)
+//    private val task: TextView = itemView.findViewById(R.id.taskView)
+//    private val status:TextView = itemView.findViewById(R.id.Status)
     private val accountImageIv: ImageView = itemView.findViewById(R.id.accountImageIv)
 
     fun bindData(post: PostModel){
@@ -39,7 +39,7 @@ class PostViewHolder(itemView: View): ViewHolder(itemView) {
         phonenumber.text = post.phonenumber
         email.text = post.email
         companyname.text = post.companyname
-        status.text = post.status
+//        status.text = post.status
         accountImageIv.setImageResource(post.userImageId)
 
         if(post.status == "Done"){

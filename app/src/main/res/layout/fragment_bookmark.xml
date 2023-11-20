@@ -9,35 +9,36 @@
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:fitsSystemWindows="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fitsSystemWindows="true">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            />
+            android:layout_height="77dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="116dp"
+                android:layout_marginTop="16dp"
+                android:text="Bookmarks"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/horizontalRv"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="642dp"
             android:scrollbars="horizontal" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/verticalRv"
-            android:layout_width="match_parent"
-            android:layout_height="375dp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:text="HOME" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

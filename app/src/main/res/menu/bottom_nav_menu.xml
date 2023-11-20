@@ -7,9 +7,9 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/todo"
+        android:id="@+id/companies"
         android:icon="@drawable/baseline_checklist_24"
-        android:title="@string/title_dashboard" />
+        android:title="Company" />
 
     <item
         android:id="@+id/bookmark"
@@ -20,5 +20,10 @@
         android:id="@+id/login"
         android:icon="@drawable/baseline_person_2_24"
         android:title="Profile" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/baseline_more_horiz_24"
+        android:title="Settings" />
 
 </menu>

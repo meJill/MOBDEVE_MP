@@ -1,17 +1,17 @@
 package com.mobdeve.mp
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobdeve.mp.fragments.bookFragment
 import com.mobdeve.mp.ui.login.loginFragment
 import com.mobdeve.mp.fragments.FullscreenFragment
-import com.mobdeve.mp.fragments.ScrollingFragment
+import com.mobdeve.mp.fragments.companiesFragment
+import com.mobdeve.mp.fragments.SettingsFragment
+import com.mobdeve.mp.fragments.homeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,10 +20,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myAdapter: MyAdapter
     private lateinit var navigationView: BottomNavigationView
 
-    private val todoFragment = ScrollingFragment() // Replace with your actual fragment class
-    private val homeFragment = FullscreenFragment()
+    private val companiesFragment = companiesFragment() // Replace with your actual fragment class
+    private val homeFragment = homeFragment()
     private val bookFragment = bookFragment()// Replace with your actual fragment class
     private val loginFragment = loginFragment()// Replace with your actual fragment class
+    private val settingsFragment = SettingsFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,12 +43,12 @@ class MainActivity : AppCompatActivity() {
         // Sets the adapter of the recycler view
 
 
-        val buttonClick = findViewById<FloatingActionButton>(R.id.add_button)
-        buttonClick?.setOnClickListener {
-            val intent = Intent(this, AddReq::class.java)
-            startActivity(intent)
-
-        }
+//        val buttonClick = findViewById<FloatingActionButton>(R.id.add_button)
+//        buttonClick?.setOnClickListener {
+//            val intent = Intent(this, AddReq::class.java)
+//            startActivity(intent)
+//
+//        }
 
         navigationView = findViewById(R.id.nav_view)
         navigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -56,8 +57,8 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(homeFragment)
                     true
                 }
-                R.id.todo -> {
-                    replaceFragment(todoFragment)
+                R.id.companies -> {
+                    replaceFragment(companiesFragment)
                     true
                 }
                 R.id.bookmark -> {
@@ -66,6 +67,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.login -> {
                     replaceFragment(loginFragment)
+                    true
+                }
+                R.id.settings -> {
+                    replaceFragment(settingsFragment)
                     true
                 }
 

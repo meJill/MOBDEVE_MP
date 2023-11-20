@@ -8,98 +8,47 @@
     android:padding="4dp"
     tools:context=".AddReq">
 
-    <EditText
-        android:id="@+id/lastNameEtv"
-        android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Enter Requirements"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/titleTv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/numberEtv"
-        android:layout_width="409dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Enter Number"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameEtv" />
-
-    <EditText
-        android:id="@+id/emailEvt"
-        android:layout_width="0dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameEtv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
-
-    <EditText
-        android:id="@+id/firstNameEtv"
-        android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Enter Company Name"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/emailEvt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/tempImageIv"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintTop_toBottomOf="@+id/numberEtv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/selectBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="SELECT IMAGE"
-        android:textColorLink="#FF9696"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tempImageIv" />
-
     <Button
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Add Contact"
-        app:layout_constraintTop_toBottomOf="@+id/selectBtn"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#2E94A1"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/jobs" />
 
     <TextView
         android:id="@+id/titleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Company"
+        android:layout_marginTop="120dp"
+        android:text="Add Internship/Job"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/jobs"
+        android:layout_width="358dp"
+        android:layout_height="259dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="@string/prompt_password"
+        android:hint="Offered Jobs/Interships"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
