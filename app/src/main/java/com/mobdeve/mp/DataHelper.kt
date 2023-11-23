@@ -5,7 +5,7 @@ class DataHelper {
         fun initializeData(): ArrayList<PostModel> {
             val company_name = arrayOf("P&G", "JJ", "Uniliver", "Canon")
             val userImages = intArrayOf(
-                R.drawable.person1,
+                R.drawable.pg,
                 R.drawable.person2,
                 R.drawable.person3,
                 R.drawable.person4

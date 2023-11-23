@@ -7,4 +7,10 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="columbia_blue">#B8D8D8</color>
+    <color name="weldon_blue">#7A9E9F</color>
+    <color name="stormcloud">#4F6367</color>
+    <color name="beige">#EEF5DB</color>
+    <color name="sunset_orange">#FE5F55</color>
+
 </resources>
