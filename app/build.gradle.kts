@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.mobdeve.mp"
         minSdk = 28
-        targetSdk = 33
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 

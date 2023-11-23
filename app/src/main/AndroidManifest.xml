@@ -33,6 +33,8 @@
         <activity android:name=".CompanyLogin" />
         <activity android:name=".Bookmarks" />
         <activity android:name=".Home"/>
+        <activity android:name=".StudentSignUp"/>
+        <activity android:name=".CompanySignUp"/>
     </application>
 
 </manifest>
