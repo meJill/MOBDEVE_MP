@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.mp.fragments.bookFragment
-import com.mobdeve.mp.ui.login.loginFragment
+import com.mobdeve.mp.ui.login.loginFragmentkt
 import com.mobdeve.mp.fragments.FullscreenFragment
 import com.mobdeve.mp.fragments.companiesFragment
 import com.mobdeve.mp.fragments.SettingsFragment
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val companiesFragment = companiesFragment() // Replace with your actual fragment class
     private val homeFragment = homeFragment()
     private val bookFragment = bookFragment()// Replace with your actual fragment class
-    private val loginFragment = loginFragment()// Replace with your actual fragment class
+    private val loginFragment = loginFragmentkt()// Replace with your actual fragment class
     private val settingsFragment = SettingsFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
