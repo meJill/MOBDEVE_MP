@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         this.myAdapter = MyAdapter(this.data)
 
 
-        val sharedPreferences = getSharedPreferences("com.mobdeve.yourname.exercise3lifecyclesp", MODE_PRIVATE)
+
 
         // Initialize the view type and hide like button settings
         // Add your code for initializing view type and hiding like button

@@ -42,12 +42,6 @@ class PostViewHolder(itemView: View): ViewHolder(itemView) {
 //        status.text = post.status
         accountImageIv.setImageResource(post.userImageId)
 
-        if(post.status == "Done"){
-//            button.setImageResource(R.drawable.heart_one)
-        }
-        else{
-//            button.setImageResource(R.drawable.heart)
-        }
 
 //        val check = post.liked
 //

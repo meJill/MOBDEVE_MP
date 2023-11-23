@@ -19,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:outlineAmbientShadowColor="#8C4A4A">
 
             <EditText
                 android:id="@+id/company_id"
@@ -53,32 +54,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/company_id" />
 
-            <Button
-                android:id="@+id/sign_in_companies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginBottom="152dp"
-                android:enabled="false"
-                android:text="Sign In"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/company_password"
-                app:layout_constraintVertical_bias="0.0" />
-
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="251dp"
                 android:layout_height="221dp"
                 android:layout_marginStart="76dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="88dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/company_banner_login" />
+
+            <Button
+                android:id="@+id/sign_in_companies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="156dp"
+                android:layout_marginTop="36dp"
+                android:text="SIGN IN"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/company_password" />
 
             <TextView
                 android:id="@+id/textView"
@@ -94,6 +88,7 @@
                 app:flow_verticalAlign="center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
