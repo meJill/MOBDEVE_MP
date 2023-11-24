@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.mobdeve.mp.Models.Job
+import com.mobdeve.mp.Models.Student
 
 private lateinit var reqs: EditText
 private lateinit var CompanyAddJobButton: Button
@@ -18,6 +20,7 @@ class CompanyAdd: AppCompatActivity(){
 
         reqs = findViewById(R.id.job_text_company)
         CompanyAddJobButton = findViewById(R.id.company_add_req)
+        val name = intent.getStringExtra("Company_Name")
 
 
         CompanyAddJobButton.setOnClickListener {
@@ -25,10 +28,19 @@ class CompanyAdd: AppCompatActivity(){
 
             // Check if both username and password fields are not empty
             if (postedReqs.isNotEmpty()) {
+                val job = Job(
+                    companyId = 1,
+                    company = name.toString(),
+                    name = findViewById<EditText>(R.id.job_text_company).text.toString(),
+                )
+
+
+                val dbHelper = MyDatabaseHelper(this)
+                dbHelper.addJob(job)
                 val message = "Username: $postedReqs\n"
                 showToast(message)
             } else {
-                showToast("Please enter both username and password")
+                showToast("Please enter a name")
             }
         }
 

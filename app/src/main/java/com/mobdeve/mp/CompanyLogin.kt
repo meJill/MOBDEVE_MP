@@ -34,8 +34,6 @@ class CompanyLogin : AppCompatActivity(){
         }
 
         companySignInButton.setOnClickListener {
-
-
             val dbHelper = MyDatabaseHelper(this)
             if (dbHelper.isCompanyUsernamePasswordMatch(findViewById<EditText>(R.id.companyL_name).text.toString(), findViewById<EditText>(R.id.companyL_password).text.toString())) {
                 println("it worked")

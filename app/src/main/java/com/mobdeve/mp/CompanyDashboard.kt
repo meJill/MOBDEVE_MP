@@ -12,15 +12,21 @@ class CompanyDashboard: AppCompatActivity(){
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CompanyAdapter
-    private val data: ArrayList<CompanyPostModel> = CompanyDataHelper.initializeData()
+//    private val data: ArrayList<CompanyPostModel> = CompanyDataHelper.initializeData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_company_dashboard)
 
+        val dbHelper = MyDatabaseHelper(this)
+        val name = intent.getStringExtra("Company_Name")
+
+        val jobNames = dbHelper.getAllJobNamesForCompany(name.toString())
+        val data: ArrayList<CompanyPostModel>  = CompanyDataHelper.companyData(jobNames)
+
         recyclerView = findViewById(R.id.dashboard_RV)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = CompanyAdapter(this.data) // Initialize your adapter here and pass your data if needed
+        adapter = CompanyAdapter(data/*, MyDatabaseHelper(this)*/) // Initialize your adapter here and pass your data if needed
         recyclerView.adapter = adapter
     }
 

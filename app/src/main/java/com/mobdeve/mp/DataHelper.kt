@@ -1,5 +1,7 @@
 package com.mobdeve.mp
 
+import com.mobdeve.mp.Models.Company
+
 class DataHelper {
     companion object{
         fun initializeData(): ArrayList<PostModel> {
@@ -31,7 +33,7 @@ class DataHelper {
             )
             data.shuffle()
             return data
-            }
         }
+    }
 
 }
