@@ -1,15 +1,14 @@
 package com.mobdeve.mp
 
+import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CompanyAdapter(private val data: ArrayList<CompanyPostModel>, private val context: Context) : RecyclerView.Adapter<CompanyViewHolder>()  {
+class CompanyAdapter(private val data: ArrayList<CompanyPostModel>, private val context: Context, private val name: String) : RecyclerView.Adapter<CompanyViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
 
@@ -25,12 +24,19 @@ class CompanyAdapter(private val data: ArrayList<CompanyPostModel>, private val 
         // many ways to implement the binding of data.
         holder.bindData(data.get(position))
 
+        holder.delete.setOnClickListener {
+            val dbHelper = MyDatabaseHelper(context)
+            dbHelper.deleteJob(holder.reqs.text.toString(), name)
+            ActivityCompat.recreate(context as Activity)
+        }
+
     }
 
     override fun getItemCount(): Int {
         // This needs to be modified, so don't forget to add this in.
         return data.size
     }
+
 
 
 

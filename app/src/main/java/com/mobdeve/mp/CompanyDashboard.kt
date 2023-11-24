@@ -4,7 +4,7 @@ package com.mobdeve.mp
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -26,7 +26,7 @@ class CompanyDashboard: AppCompatActivity(){
 
         recyclerView = findViewById(R.id.dashboard_RV)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = CompanyAdapter(data, this) // Initialize your adapter here and pass your data if needed
+        adapter = CompanyAdapter(data, this, name.toString()) // Initialize your adapter here and pass your data if needed
         recyclerView.adapter = adapter
     }
 

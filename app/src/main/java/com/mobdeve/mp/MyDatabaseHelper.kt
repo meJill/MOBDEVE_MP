@@ -323,12 +323,12 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         return newRowId
     }
 
-    fun deleteJobByName(jobName: String): Int {
+    fun deleteJob(jobName: String, companyName: String): Int {
         val db = writableDatabase
-        val whereClause = "name = ?"
-        val whereArgs = arrayOf(jobName)
+        val whereClause = "name = ? AND company = ?"
+        val whereArgs = arrayOf(jobName, companyName)
 
-        // Delete the row, returning the number of rows affected
+        // Delete
         val rowsAffected = db.delete("Job", whereClause, whereArgs)
 
         // Close the database

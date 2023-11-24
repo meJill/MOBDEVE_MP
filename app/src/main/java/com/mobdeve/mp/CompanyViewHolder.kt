@@ -2,7 +2,7 @@ package com.mobdeve.mp
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -25,7 +25,8 @@ var imageId = imageId
 
 class CompanyViewHolder(itemView: View): ViewHolder(itemView) {
 
-    private val reqs: TextView = itemView.findViewById(R.id.jobs2)
+    val reqs: TextView = itemView.findViewById(R.id.jobs2)
+    val delete: ImageButton = itemView.findViewById(R.id.jobD)
 
     fun bindData(post: CompanyPostModel){
         reqs.text = post.requirements
