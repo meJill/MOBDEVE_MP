@@ -28,7 +28,7 @@ class StudentLogin : AppCompatActivity() {
 
         studentLoginButton.setOnClickListener {
             val dbHelper = MyDatabaseHelper(this)
-            if (dbHelper.isUsernamePasswordMatch(findViewById<EditText>(R.id.studentUsername).text.toString(), findViewById<EditText>(R.id.studentPassword).text.toString())) {
+            if (dbHelper.isUsernamePasswordMatch(findViewById<EditText>(R.id.studentL_Username).text.toString(), findViewById<EditText>(R.id.studentL_Password).text.toString())) {
                 println("it worked")
             } else
                 println("no it didnt")

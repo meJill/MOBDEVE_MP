@@ -1,7 +1,7 @@
 package com.mobdeve.mp.Models
 
 data class Job(
-    val id: Int,
+    val companyId: Int,
     val company: String,
     val name: String
 )

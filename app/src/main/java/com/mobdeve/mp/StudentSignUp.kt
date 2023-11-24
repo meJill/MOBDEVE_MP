@@ -13,22 +13,22 @@ import com.mobdeve.mp.fragments.bookFragment
 import com.mobdeve.mp.fragments.homeFragment
 
 class StudentSignUp : AppCompatActivity() {
-    private lateinit var login: Button
+    private lateinit var signup: Button
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_signup)
 
-        login = findViewById(R.id.login2)
-        login?.setOnClickListener {
+        signup = findViewById(R.id.studentS_signup)
+        signup?.setOnClickListener {
             val intent = Intent(this, StudentLogin::class.java)
             // Assuming you have a Student instance
 
             val student = Student(
                 id = 1,
-                name = findViewById<EditText>(R.id.username).text.toString(),
-                password = findViewById<EditText>(R.id.password).text.toString(),
-                bookmarks = arrayListOf(Job(id = 1, company = "ABC Corp", name = "Software Engineer"))
+                name = findViewById<EditText>(R.id.studentS_username).text.toString(),
+                password = findViewById<EditText>(R.id.studentS_password).text.toString(),
+                bookmarks = arrayListOf() //arrayListOf(Job(id = 1, company = "ABC Corp", name = "Software Engineer"))
             )
 
             // Assuming you have an instance of MyDatabaseHelper
@@ -40,7 +40,7 @@ class StudentSignUp : AppCompatActivity() {
             // Check the result
             if (newRowId != -1L) {
                 // The student was added successfully
-                println("Student added with ID: $newRowId ${student.name}")
+                println("Student added with ID: $newRowId")
             } else {
                 // There was an error
                 println("Error adding student to the database")

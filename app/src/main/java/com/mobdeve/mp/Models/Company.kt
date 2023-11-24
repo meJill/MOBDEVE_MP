@@ -4,6 +4,7 @@ data class Company(
     val id: Int,
     val name: String,
     val password: String,
-    val email: String,
-    val contact: String
+    val address: String,
+    val contact: String,
+    val email: String
 )

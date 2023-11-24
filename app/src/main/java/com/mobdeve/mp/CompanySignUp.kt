@@ -3,16 +3,50 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.mobdeve.mp.Models.Company
 import com.mobdeve.mp.fragments.bookFragment
 import com.mobdeve.mp.fragments.homeFragment
 
 class CompanySignUp : AppCompatActivity() {
+    private lateinit var signup: Button
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_companies_signup)
 
+        signup = findViewById(R.id.companyS_signup)
+        signup?.setOnClickListener {
+            val intent = Intent(this, CompanyLogin::class.java)
+            // Assuming you have a Student instance
+
+            val company = Company(
+                id = 1,
+                name = findViewById<EditText>(R.id.companyS_name).text.toString(),
+                password = findViewById<EditText>(R.id.companyS_password).text.toString(),
+                address = findViewById<EditText>(R.id.companyS_address).text.toString(),
+                contact = findViewById<EditText>(R.id.companyS_contact_number).text.toString(),
+                email = findViewById<EditText>(R.id.companyS_email).text.toString()
+            )
+
+            // Assuming you have an instance of MyDatabaseHelper
+            val dbHelper = MyDatabaseHelper(this)
+
+            // Add the company to the database
+            val newRowId = dbHelper.addCompany(company)
+
+            // Check the result
+            if (newRowId != -1L) {
+                // The student was added successfully
+                println("Student added with ID: $newRowId $company")
+            } else {
+                // There was an error
+                println("Error adding company to the database")
+            }
+
+            startActivity(intent)
+        }
     }
 }

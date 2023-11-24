@@ -22,11 +22,11 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/company_id"
+                android:id="@+id/companyS_name"
                 android:layout_width="359dp"
                 android:layout_height="66dp"
                 android:layout_marginTop="220dp"
-                android:hint="Company ID"
+                android:hint="Company Name"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.461"
@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/company_password"
+                android:id="@+id/companyS_password"
                 android:layout_width="361dp"
                 android:layout_height="63dp"
                 android:layout_marginStart="24dp"
@@ -49,10 +49,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/company_id" />
+                app:layout_constraintTop_toBottomOf="@+id/companyS_name" />
 
             <EditText
-                android:id="@+id/address"
+                android:id="@+id/companyS_address"
                 android:layout_width="361dp"
                 android:layout_height="63dp"
                 android:layout_marginStart="24dp"
@@ -67,10 +67,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/company_password" />
+                app:layout_constraintTop_toBottomOf="@+id/companyS_password" />
 
             <EditText
-                android:id="@+id/contact_number"
+                android:id="@+id/companyS_contact_number"
                 android:layout_width="361dp"
                 android:layout_height="63dp"
                 android:layout_marginStart="24dp"
@@ -85,10 +85,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/address" />
+                app:layout_constraintTop_toBottomOf="@+id/companyS_address" />
 
             <EditText
-                android:id="@+id/Email"
+                android:id="@+id/companyS_email"
                 android:layout_width="361dp"
                 android:layout_height="63dp"
                 android:layout_marginStart="24dp"
@@ -103,10 +103,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contact_number" />
+                app:layout_constraintTop_toBottomOf="@+id/companyS_contact_number" />
 
             <Button
-                android:id="@+id/sign_up_companies"
+                android:id="@+id/companyS_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -116,7 +116,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Email" />
+                app:layout_constraintTop_toBottomOf="@+id/companyS_email" />
 
             <ImageView
                 android:id="@+id/imageView"

@@ -4,19 +4,20 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.content.ContentValues
+import com.mobdeve.mp.Models.Company
 import com.mobdeve.mp.Models.Student
 
 class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         private const val DATABASE_NAME = "mydatabase"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
     }
 
     // Define the columns for the Job table
     private val createJobTableQuery = """
         CREATE TABLE IF NOT EXISTS Job (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            companyId INTEGER PRIMARY KEY AUTOINCREMENT,
             company TEXT,
             name TEXT
         );
@@ -38,6 +39,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             password TEXT,
+            address TEXT,
             email TEXT,
             contact TEXT
         );
@@ -83,6 +85,71 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
         val cursor = db.query(
             "Student",   // The table to query
+            null,        // The array of columns to return (null means all columns)
+            selection,   // The columns for the WHERE clause
+            selectionArgs, // The values for the WHERE clause
+            null,        // don't group the rows
+            null,        // don't filter by row groups
+            null         // don't sort the order
+        )
+
+        val matchFound = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+
+        return matchFound
+    }
+
+    fun addCompany(company: Company): Long {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("name", company.name)
+            put("password", company.password)
+            put("address", company.address)
+            put("contact", company.contact)
+            put("email", company.email)
+        }
+
+        // Insert the new row, returning the primary key value of the new row
+        val newRowId = db.insert("Company", null, values)
+
+        // Close the database
+        db.close()
+
+        return newRowId
+    }
+
+    fun editCompany(company: Company): Int {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("name", company.name)
+            put("password", company.password)
+            put("address", company.address)
+            put("contact", company.contact)
+            put("email", company.email)
+        }
+
+        // Update the row, returning the number of rows affected
+        val rowsAffected = db.update(
+            "Company",
+            values,
+            "id = ?",
+            arrayOf(company.id.toString())
+        )
+
+        // Close the database
+        db.close()
+
+        return rowsAffected
+    }
+
+    fun isCompanyUsernamePasswordMatch(username: String, password: String): Boolean {
+        val db = readableDatabase
+        val selection = "name = ? AND password = ?"
+        val selectionArgs = arrayOf(username, password)
+
+        val cursor = db.query(
+            "Company",   // The table to query
             null,        // The array of columns to return (null means all columns)
             selection,   // The columns for the WHERE clause
             selectionArgs, // The values for the WHERE clause
