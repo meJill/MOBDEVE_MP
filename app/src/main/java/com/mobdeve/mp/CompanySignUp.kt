@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobdeve.mp.Models.Company
@@ -31,22 +32,28 @@ class CompanySignUp : AppCompatActivity() {
                 email = findViewById<EditText>(R.id.companyS_email).text.toString()
             )
 
-            // Assuming you have an instance of MyDatabaseHelper
             val dbHelper = MyDatabaseHelper(this)
 
-            // Add the company to the database
-            val newRowId = dbHelper.addCompany(company)
+            if (!dbHelper.isCompanyNameExist(findViewById<EditText>(R.id.companyS_name).text.toString())) {
+                // Add the company to the database
+                val newRowId = dbHelper.addCompany(company)
 
-            // Check the result
-            if (newRowId != -1L) {
-                // The student was added successfully
-                println("Student added with ID: $newRowId $company")
+                // Check the result
+                if (newRowId != -1L) {
+                    // The student was added successfully
+                    println("Student added with ID: $newRowId $company")
+                } else {
+                    // There was an error
+                    println("Error adding company to the database")
+                }
+
+                startActivity(intent)
             } else {
-                // There was an error
-                println("Error adding company to the database")
+                showToast("Please use another name")
             }
-
-            startActivity(intent)
         }
+    }
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

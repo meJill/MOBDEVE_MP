@@ -5,13 +5,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.content.ContentValues
 import com.mobdeve.mp.Models.Company
+import com.mobdeve.mp.Models.Job
 import com.mobdeve.mp.Models.Student
 
 class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         private const val DATABASE_NAME = "mydatabase"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
     }
 
     // Define the columns for the Job table
@@ -78,6 +79,28 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         return newRowId
     }
 
+    fun isStudentUsernameExists(username: String): Boolean {
+        val db = readableDatabase
+        val selection = "name = ?"
+        val selectionArgs = arrayOf(username)
+
+        val cursor = db.query(
+            "Student",   // The table to query
+            null,        // The array of columns to return (null means all columns)
+            selection,   // The columns for the WHERE clause
+            selectionArgs, // The values for the WHERE clause
+            null,        // don't group the rows
+            null,        // don't filter by row groups
+            null         // don't sort the order
+        )
+
+        val usernameExists = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+
+        return usernameExists
+    }
+
     fun isUsernamePasswordMatch(username: String, password: String): Boolean {
         val db = readableDatabase
         val selection = "name = ? AND password = ?"
@@ -117,6 +140,28 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         db.close()
 
         return newRowId
+    }
+
+    fun isCompanyNameExist (name: String): Boolean {
+        val db = readableDatabase
+        val selection = "name = ?"
+        val selectionArgs = arrayOf(name)
+
+        val cursor = db.query(
+            "Company",   // The table to query
+            null,        // The array of columns to return (null means all columns)
+            selection,   // The columns for the WHERE clause
+            selectionArgs, // The values for the WHERE clause
+            null,        // don't group the rows
+            null,        // don't filter by row groups
+            null         // don't sort the order
+        )
+
+        val nameExists = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+
+        return nameExists
     }
 
     fun editCompany(company: Company): Int {
@@ -163,5 +208,21 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         db.close()
 
         return matchFound
+    }
+
+    fun addJob(job: Job): Long {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("company", job.company)
+            put("name", job.name)
+        }
+
+        // Insert the new row, returning the primary key value of the new row
+        val newRowId = db.insert("Job", null, values)
+
+        // Close the database
+        db.close()
+
+        return newRowId
     }
 }
