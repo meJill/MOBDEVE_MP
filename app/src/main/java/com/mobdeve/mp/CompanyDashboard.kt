@@ -26,7 +26,7 @@ class CompanyDashboard: AppCompatActivity(){
 
         recyclerView = findViewById(R.id.dashboard_RV)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = CompanyAdapter(data/*, MyDatabaseHelper(this)*/) // Initialize your adapter here and pass your data if needed
+        adapter = CompanyAdapter(data, this) // Initialize your adapter here and pass your data if needed
         recyclerView.adapter = adapter
     }
 
