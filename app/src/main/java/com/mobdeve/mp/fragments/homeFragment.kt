@@ -11,6 +11,7 @@ import com.mobdeve.mp.DataHelper
 import com.mobdeve.mp.MyAdapter
 import com.mobdeve.mp.PostModel
 
+
 import com.mobdeve.mp.R
 
 class homeFragment : Fragment() {
@@ -27,7 +28,7 @@ class homeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerView = view.findViewById(R.id.horizontalRv)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = MyAdapter(this.data) // Initialize your adapter here and pass your data if needed
+        adapter = MyAdapter(this.data)
         recyclerView.adapter = adapter
         return view
     }

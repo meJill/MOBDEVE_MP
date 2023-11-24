@@ -4,18 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val data: ArrayList<PostModel>) : RecyclerView.Adapter<PostViewHolder>()  {
+class CompanyAdapter(private val data: ArrayList<CompanyPostModel>) : RecyclerView.Adapter<CompanyViewHolder>()  {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
 
         val infalter = LayoutInflater.from(parent.context)
 
-        val view = infalter.inflate(R.layout.vertical_layout, parent, false)
+        val newview = infalter.inflate(R.layout.horizontal_layout, parent, false)
 
-        return PostViewHolder(view)
+        return CompanyViewHolder(newview)
     }
 
-    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
         // Please note that bindData is a function we created to adhere to encapsulation. There are
         // many ways to implement the binding of data.
         holder.bindData(data.get(position))

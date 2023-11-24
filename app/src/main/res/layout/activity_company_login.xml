@@ -73,8 +73,9 @@
                 android:layout_marginTop="44dp"
                 android:backgroundTint="#6B9673"
                 android:fontFamily="@font/bauhaus_93"
-                android:text="SIGN IN"
                 android:textSize="24dp"
+                android:text="SIGN IN"
+
                 android:textColor="@color/light_green"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/companyL_password" />

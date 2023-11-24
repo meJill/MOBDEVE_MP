@@ -1,4 +1,4 @@
-package com.mobdeve.act1.ferrer.fakeadex
+package com.mobdeve.mp
 
 import android.view.View
 import android.widget.Button
@@ -38,22 +38,7 @@ class PostViewHolder(itemView: View): ViewHolder(itemView) {
         reqs.text = post.requirements
         phonenumber.text = post.phonenumber
         email.text = post.email
-        companyname.text = post.companyname
-//        status.text = post.status
         accountImageIv.setImageResource(post.userImageId)
 
-
-//        val check = post.liked
-//
-//        button.setOnClickListener{
-//            post.liked = !post.liked
-//            if (post.liked) {
-//                button.setImageResource(R.drawable.heart_one)
-//            } else {
-//                button.setImageResource(R.drawable.heart)
-//            }}
-
     }
-
-
 }

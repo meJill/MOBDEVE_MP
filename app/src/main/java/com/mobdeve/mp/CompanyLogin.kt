@@ -34,10 +34,10 @@ class CompanyLogin : AppCompatActivity(){
         }
 
         companySignInButton.setOnClickListener {
+            val intent = Intent(this, CompanyHome:: class.java)
             val dbHelper = MyDatabaseHelper(this)
             if (dbHelper.isCompanyUsernamePasswordMatch(findViewById<EditText>(R.id.companyL_name).text.toString(), findViewById<EditText>(R.id.companyL_password).text.toString())) {
                 println("it worked")
-                val intent = Intent(this, CompanyAdd:: class.java)
                 startActivity(intent)
             } else
                 println("no it didnt")
