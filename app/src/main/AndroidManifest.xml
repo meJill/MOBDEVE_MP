@@ -35,6 +35,9 @@
         <activity android:name=".Home"/>
         <activity android:name=".StudentSignUp"/>
         <activity android:name=".CompanySignUp"/>
+        <activity android:name=".CompanyAdd"/>
+        <activity android:name=".CompanyDashboard"/>
+
     </application>
 
 </manifest>

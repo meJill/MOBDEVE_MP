@@ -23,18 +23,10 @@ class CompanyLogin : AppCompatActivity(){
 
 
 
-        companySignInButton.setOnClickListener{
-            val name = company_id.text.toString()
-            val password = company_password.text.toString()
-            // Check if both username and password fields are not empty
-            if (name.isNotEmpty() && password.isNotEmpty()) {
-                //val message = "Username: $name\nPassword: $password"
-                //showToast(message)
-
-            } else {
-                showToast("Please enter both username and password")
-            }
-        }
+//        companySignInButton.setOnClickListener{
+//            val intent = Intent(this, CompanyAdd::class.java)
+//            startActivity(intent)
+//        }
 
         companySignUpButton.setOnClickListener {
             val intent = Intent(this, CompanySignUp::class.java)
@@ -45,6 +37,8 @@ class CompanyLogin : AppCompatActivity(){
             val dbHelper = MyDatabaseHelper(this)
             if (dbHelper.isCompanyUsernamePasswordMatch(findViewById<EditText>(R.id.companyL_name).text.toString(), findViewById<EditText>(R.id.companyL_password).text.toString())) {
                 println("it worked")
+                val intent = Intent(this, CompanyAdd:: class.java)
+                startActivity(intent)
             } else
                 println("no it didnt")
         }

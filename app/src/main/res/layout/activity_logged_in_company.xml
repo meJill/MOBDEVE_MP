@@ -5,65 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addBtn"
-        android:layout_width="174dp"
-        android:layout_height="220dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="44dp"
-        android:clickable="true"
-        app:fabCustomSize="174dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton3"
-        app:maxImageSize="100dp"
-        app:srcCompat="@drawable/baseline_add_circle_24" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
-        android:layout_width="57dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:outlineAmbientShadowColor="#FFEB3B"
-        android:outlineSpotShadowColor="#FFEB3B"
-        app:backgroundTint="#8FFFEB3B"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:rippleColor="#FFEB3B"
-        app:srcCompat="@drawable/baseline_border_color_24" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
-        android:layout_width="57dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="136dp"
-        android:clickable="true"
-        app:backgroundTint="#9EF44336"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@drawable/baseline_delete_forever_24" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+    <Button
+        android:id="@+id/company_PostInternship"
         android:text="Post Internship"
+        android:fontFamily="@font/bauhaus_93"
+        android:textSize="40dp"
+        android:textColor="@color/light_green"
+        android:layout_width="284dp"
+        android:layout_height="135dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="112dp"
+        android:background="#6B9773"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/companyName_Edit" />
+
+    <Button
+        android:id="@+id/company_Dashboard"
+        android:text="Dashboard"
+        android:fontFamily="@font/bauhaus_93"
+        android:textSize="40dp"
+        android:textColor="@color/light_green"
+        android:layout_width="285dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:background="#6B9773"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/company_PostInternship" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="237dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="664dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/practiquest" />
+
+    <Button
+        android:id="@+id/company_Edit"
+        android:text="Edit"
+        android:fontFamily="@font/bauhaus_93"
+        android:textSize="26dp"
+        android:layout_width="132dp"
+        android:layout_height="63dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:background="#FDF28F"
+        app:layout_constraintEnd_toStartOf="@+id/company_Delete"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companyName_Edit" />
+
+    <Button
+        android:id="@+id/company_Delete"
+        android:text="Delete"
+        android:fontFamily="@font/bauhaus_93"
+        android:textSize="26dp"
+        android:layout_width="132dp"
+        android:layout_height="63dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="64dp"
+        android:background="#F68980"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companyName_Edit" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/companyName_Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/bauhaus_93"
         android:text="Company Name"
-        android:textSize="34sp"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -71,8 +95,8 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />

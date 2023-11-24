@@ -11,9 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var data: ArrayList<PostModel>
-    private lateinit var recyclerView: RecyclerView
     private lateinit var myAdapter: MyAdapter
-    private lateinit var navigationView: BottomNavigationView
     private lateinit var homeButton: Button
     private lateinit var studentButton: Button
     private lateinit var companyButton: Button
