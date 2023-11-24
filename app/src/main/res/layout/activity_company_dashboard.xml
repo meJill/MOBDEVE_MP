@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -33,11 +35,11 @@
             app:flow_horizontalAlign="start"
             app:flow_verticalAlign="center" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_dashboard"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dashboard_RV"
             android:name="com.mobdeve.mp.fragments.dashboardFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="734dp" />
 
     </LinearLayout>
 

@@ -16,43 +16,28 @@
         android:layout_marginTop="32dp"
         android:background="@color/middle_green"
         android:fontFamily="@font/bauhaus"
-        android:textColor="@color/light_green"
+        android:gravity="center"
         android:text="STUDENT"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/home"
-        android:layout_width="205dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="288dp"
-        android:background="@color/middle_green"
-        android:fontFamily="@font/bauhaus"
-        android:text="HOME"
         android:textColor="@color/light_green"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
         android:id="@+id/company"
         android:layout_width="205dp"
         android:layout_height="88dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@color/middle_green"
         android:fontFamily="@font/bauhaus"
+        android:gravity="center"
         android:text="COMPANY"
         android:textColor="@color/light_green"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student"
-        android:gravity="center"/>
+        app:layout_constraintTop_toBottomOf="@+id/student" />
 
     <ImageView
         android:id="@+id/imageView5"

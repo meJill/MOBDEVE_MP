@@ -26,12 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         this.myAdapter = MyAdapter(this.data)
 
-        homeButton = findViewById(R.id.home)
-        homeButton?.setOnClickListener {
-            val intent = Intent(this, Home::class.java)
-            startActivity(intent)
-        }
-
         studentButton = findViewById(R.id.student)
         studentButton?.setOnClickListener {
             val intent = Intent(this, StudentLogin::class.java)
