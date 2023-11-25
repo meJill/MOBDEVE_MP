@@ -7,9 +7,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-
-private lateinit var dashBoardButton: Button
-private lateinit var postinternshipButton: Button
 class CompanyHome: AppCompatActivity(){
 
     @SuppressLint("MissingInflatedId")
@@ -17,10 +14,12 @@ class CompanyHome: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_in_company)
 
-        dashBoardButton = findViewById(R.id.company_Dashboard)
-        postinternshipButton = findViewById(R.id.company_PostInternship)
+        var dashBoardButton: Button = findViewById(R.id.company_Dashboard)
+        var postinternshipButton: Button = findViewById(R.id.company_PostInternship)
+        var deleteButton: Button = findViewById(R.id.company_Delete)
         val name = intent.getStringExtra("Company_Name")
         findViewById<TextView>(R.id.companyName_Edit).text = name.toString()
+        val dbHelper = MyDatabaseHelper(this)
 
         dashBoardButton.setOnClickListener {
             val intent = Intent(this, CompanyDashboard::class.java)
@@ -32,6 +31,11 @@ class CompanyHome: AppCompatActivity(){
             val intent = Intent(this, CompanyAdd::class.java)
             intent.putExtra("Company_Name", name)
             startActivity(intent)
+        }
+
+        deleteButton.setOnClickListener {
+            dbHelper.deleteCompanyByName(name.toString())
+            finish()
         }
 
     }
