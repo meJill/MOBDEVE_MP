@@ -17,9 +17,6 @@ class CompanySignUp : AppCompatActivity() {
 
         signup = findViewById(R.id.companyS_signup)
         signup?.setOnClickListener {
-            val intent = Intent(this, CompanyLogin::class.java)
-            // Assuming you have a Student instance
-
             val company = Company(
                 id = 1,
                 name = findViewById<EditText>(R.id.companyS_name).text.toString(),
@@ -46,8 +43,7 @@ class CompanySignUp : AppCompatActivity() {
                     // There was an error
                     println("Error adding company to the database")
                 }
-
-                startActivity(intent)
+                finish()
             } else {
                 showToast("Please use another name")
             }

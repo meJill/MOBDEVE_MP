@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val dbHelper = MyDatabaseHelper(this)
 
         // Initialize the data, recyclerView, and adapter
-        this.data = DataHelper.initializeData()
+        this.data = DataHelper.studentData(dbHelper.getAllCompanies())
 
         this.myAdapter = MyAdapter(this.data)
 

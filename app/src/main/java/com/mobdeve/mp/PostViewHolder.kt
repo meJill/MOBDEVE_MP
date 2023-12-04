@@ -38,7 +38,7 @@ class PostViewHolder(itemView: View): ViewHolder(itemView) {
         reqs.text = post.requirements
         phonenumber.text = post.phonenumber
         email.text = post.email
-        accountImageIv.setImageResource(post.userImageId)
+        companyname.text = post.companyname
 
     }
 }

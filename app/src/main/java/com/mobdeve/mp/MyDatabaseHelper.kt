@@ -7,6 +7,7 @@ import android.content.ContentValues
 import com.mobdeve.mp.Models.Company
 import com.mobdeve.mp.Models.Job
 import com.mobdeve.mp.Models.Student
+import kotlin.math.min
 
 class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -78,6 +79,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
         return newRowId
     }
+
 
     fun isStudentUsernameExists(username: String): Boolean {
         val db = readableDatabase
@@ -274,6 +276,48 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
             return null
         }
+    }
+
+    fun getAllCompanies(): List<PostModel> {
+        val companies = mutableListOf<PostModel>()
+        val db = readableDatabase
+        val columns = arrayOf("id", "name", "password", "address", "contact", "email")
+
+        // Query the Company table to get all companies
+        val cursor = db.query("Company", columns, null, null, null, null, null)
+
+        // Iterate through the cursor to retrieve companies
+        while (cursor.moveToNext()) {
+            val nameIndex = cursor.getColumnIndex("name")
+            val addressIndex = cursor.getColumnIndex("address")
+            val contactIndex = cursor.getColumnIndex("contact")
+            val emailIndex = cursor.getColumnIndex("email")
+
+            var jobs = getAllJobNamesForCompany(cursor.getString(nameIndex))
+            var jobN: String = ""
+
+            jobs.forEachIndexed() { i, element ->
+
+                if (i == 0) {
+                    jobN = element
+                } else {
+                    jobN = jobN + ", " + element
+                }
+            }
+            val postModel = PostModel(
+                requirements = jobN,
+                phonenumber = cursor.getString(contactIndex),
+                email = cursor.getString(emailIndex),
+                companyname = cursor.getString(nameIndex)
+            )
+            companies.add(postModel)
+        }
+
+        // Close the cursor and the database
+        cursor.close()
+        db.close()
+
+        return companies
     }
 
     fun isCompanyNameExist (name: String): Boolean {

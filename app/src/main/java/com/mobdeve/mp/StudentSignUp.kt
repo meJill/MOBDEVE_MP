@@ -30,7 +30,11 @@ class StudentSignUp : AppCompatActivity() {
 
             val dbHelper = MyDatabaseHelper(this)
 
-            if (!dbHelper.isStudentUsernameExists(findViewById<EditText>(R.id.studentS_username).text.toString())) {
+            if (dbHelper.isStudentUsernameExists(findViewById<EditText>(R.id.studentS_username).text.toString())) {
+                showToast("Please use another name")
+            } else if (findViewById<EditText>(R.id.studentS_username).text.toString().isEmpty() || findViewById<EditText>(R.id.studentS_password).text.toString().isEmpty()) {
+                showToast("Please fill in the blank")
+            } else {
                 // Add the student to the database
                 val newRowId = dbHelper.addStudent(student)
 
@@ -43,9 +47,7 @@ class StudentSignUp : AppCompatActivity() {
                     println("Error adding student to the database")
                 }
 
-                startActivity(intent)
-            } else {
-                showToast("Please use another name")
+                finish()
             }
         }
     }
