@@ -12,13 +12,13 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     companion object {
         private const val DATABASE_NAME = "mydatabase"
-        private const val DATABASE_VERSION = 7
+        private const val DATABASE_VERSION = 9
     }
 
     // Define the columns for the Job table
     private val createJobTableQuery = """
         CREATE TABLE IF NOT EXISTS Job (
-            companyId INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             company TEXT,
             name TEXT
         );
@@ -388,5 +388,50 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         return rowsAffected
     }
 
+    fun editJob(currentJobName: String, currentCompanyName: String, newJobName: String): Int {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("name", newJobName)
+            // You can add other fields if needed
+        }
+
+        val whereClause = "name = ? AND company = ?"
+        val whereArgs = arrayOf(currentJobName, currentCompanyName)
+
+        // Update the row, returning the number of rows affected
+        val rowsAffected = db.update("Job", values, whereClause, whereArgs)
+
+        // Close the database
+        db.close()
+
+        return rowsAffected
+
+
+    }
+    fun doesJobExist(jobName: String, companyName: String): Boolean {
+        val db = readableDatabase
+        val columns = arrayOf("id")
+        val selection = "name = ? AND company = ?"
+        val selectionArgs = arrayOf(jobName, companyName)
+
+        // Query the Job table to check if the job exists with the specified name and company
+        val cursor = db.query(
+            "Job",
+            columns,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+
+        val jobExists = cursor.moveToFirst()
+
+        // Close the cursor and the database
+        cursor.close()
+        db.close()
+
+        return jobExists
+    }
 
 }

@@ -33,6 +33,12 @@ class CompanyDashboard : AppCompatActivity() {
         // showDialog()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        this.recreate()
+    }
+
     private fun showDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Welcome")

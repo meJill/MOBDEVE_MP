@@ -2,9 +2,11 @@ package com.mobdeve.mp
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 
@@ -28,6 +30,12 @@ class CompanyAdapter(private val data: ArrayList<CompanyPostModel>, private val 
             val dbHelper = MyDatabaseHelper(context)
             dbHelper.deleteJob(holder.reqs.text.toString(), name)
             ActivityCompat.recreate(context as Activity)
+        }
+        holder.edit.setOnClickListener {
+            val intent = Intent(context, CompanyJobEdit::class.java)
+            intent.putExtra("Og_Name", holder.reqs.text.toString())
+            intent.putExtra("Company_Name", name)
+            context.startActivity(intent)
         }
 
     }

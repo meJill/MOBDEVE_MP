@@ -27,6 +27,7 @@ class CompanyViewHolder(itemView: View): ViewHolder(itemView) {
 
     val reqs: TextView = itemView.findViewById(R.id.jobs2)
     val delete: ImageButton = itemView.findViewById(R.id.jobD)
+    val edit: ImageButton = itemView.findViewById(R.id.jobE)
 
     fun bindData(post: CompanyPostModel){
         reqs.text = post.requirements

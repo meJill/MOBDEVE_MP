@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/practiquest" />
     <Button
-        android:id="@+id/companyE_cancel"
+        android:id="@+id/company_jobE_cancel"
         android:layout_width="147dp"
         android:layout_height="67dp"
         android:layout_gravity="start"
@@ -32,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text_company" />
+        app:layout_constraintTop_toBottomOf="@+id/jobE_text_company" />
 
     <Button
-        android:id="@+id/companyE_save"
+        android:id="@+id/company_jobE_save"
         android:layout_width="147dp"
         android:layout_height="67dp"
         android:layout_gravity="start"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text_company" />
+        app:layout_constraintTop_toBottomOf="@+id/jobE_text_company" />
 
     <TextView
         android:id="@+id/titleTv"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/job_text_company"
+        android:id="@+id/jobE_text_company"
         android:layout_width="333dp"
         android:layout_height="202dp"
         android:layout_marginStart="24dp"

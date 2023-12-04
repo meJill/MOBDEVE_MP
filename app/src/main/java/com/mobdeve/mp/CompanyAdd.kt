@@ -21,26 +21,25 @@ class CompanyAdd: AppCompatActivity(){
         reqs = findViewById(R.id.job_text_company)
         CompanyAddJobButton = findViewById(R.id.company_add_req)
         val name = intent.getStringExtra("Company_Name")
-
+        val dbHelper = MyDatabaseHelper(this)
 
         CompanyAddJobButton.setOnClickListener {
             val postedReqs = reqs.text.toString()
 
             // Check if both username and password fields are not empty
-            if (postedReqs.isNotEmpty()) {
+            if (postedReqs.isEmpty()) {
+                showToast("Please enter a name")
+            } else if (dbHelper.doesJobExist(postedReqs, name.toString())) {
+                showToast("Job already exists!")
+            } else {
                 val job = Job(
-                    companyId = 1,
+                    id = 1,
                     company = name.toString(),
                     name = findViewById<EditText>(R.id.job_text_company).text.toString(),
                 )
-
-
-                val dbHelper = MyDatabaseHelper(this)
                 dbHelper.addJob(job)
-                val message = "Username: $reqs\n"
+                val message = "Username: $postedReqs\n"
                 showToast(message)
-            } else {
-                showToast("Please enter a name")
             }
         }
 
