@@ -3,12 +3,13 @@ package com.mobdeve.mp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class CompanyDashboard: AppCompatActivity(){
+class CompanyDashboard : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CompanyAdapter
@@ -28,6 +29,19 @@ class CompanyDashboard: AppCompatActivity(){
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = CompanyAdapter(data, this, name.toString()) // Initialize your adapter here and pass your data if needed
         recyclerView.adapter = adapter
+
+        // Call this function to show the dialog
+        showDialog()
     }
 
+    private fun showDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Welcome")
+        builder.setMessage("This is your company dashboard.")
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
 }

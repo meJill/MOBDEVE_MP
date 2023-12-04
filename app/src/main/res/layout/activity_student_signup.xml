@@ -82,7 +82,7 @@
         android:backgroundTint="@color/middle_green"
         android:enabled="true"
         android:fontFamily="@font/bauhaus_93"
-        android:text="Sign In"
+        android:text="Sign UP"
         android:textColor="@color/light_green"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -4,30 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#000000"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     app:layout_constraintGuide_percent="0.35"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="956dp"
-        android:layout_height="1699dp"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/student"
+        android:layout_width="787dp"
+        android:layout_height="305dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/middle_green"
+        android:fontFamily="@font/bauhaus"
+        android:gravity="center"
+        android:text="STUDENT"
+        android:textColor="@color/light_green"
+        android:textSize="100sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+    <Button
+        android:id="@+id/company"
+        android:layout_width="787dp"
+        android:layout_height="305dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/middle_green"
+        android:fontFamily="@font/bauhaus"
+        android:gravity="center"
+        android:text="COMPANY"
+        android:textColor="@color/light_green"
+        android:textSize="100sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student" />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="1588dp"
-            android:layout_above="@+id/bottom_navigation" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="429dp"
+        android:layout_height="287dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/practiquest" />
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/bauhaus"
+        android:gravity="center"
+        android:text="Choose Your Quest"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="100sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
