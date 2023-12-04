@@ -37,7 +37,7 @@ class CompanyAdd: AppCompatActivity(){
 
                 val dbHelper = MyDatabaseHelper(this)
                 dbHelper.addJob(job)
-                val message = "Username: $postedReqs\n"
+                val message = "Username: $reqs\n"
                 showToast(message)
             } else {
                 showToast("Please enter a name")

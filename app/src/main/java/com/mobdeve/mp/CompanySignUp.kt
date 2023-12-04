@@ -6,10 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobdeve.mp.Models.Company
-import com.mobdeve.mp.fragments.bookFragment
-import com.mobdeve.mp.fragments.homeFragment
 
 class CompanySignUp : AppCompatActivity() {
     private lateinit var signup: Button
@@ -34,7 +31,10 @@ class CompanySignUp : AppCompatActivity() {
 
             val dbHelper = MyDatabaseHelper(this)
 
-            if (!dbHelper.isCompanyNameExist(findViewById<EditText>(R.id.companyS_name).text.toString())) {
+            if (emptyCheck()) {
+                showToast("Please fill up all the blanks")
+            }
+            else if (!dbHelper.isCompanyNameExist(findViewById<EditText>(R.id.companyS_name).text.toString())) {
                 // Add the company to the database
                 val newRowId = dbHelper.addCompany(company)
 
@@ -55,5 +55,13 @@ class CompanySignUp : AppCompatActivity() {
     }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun emptyCheck (): Boolean {
+        return (findViewById<EditText>(R.id.companyS_name).text.toString().isEmpty() ||
+                findViewById<EditText>(R.id.companyS_password).text.toString().isEmpty() ||
+                findViewById<EditText>(R.id.companyS_address).text.toString().isEmpty() ||
+                findViewById<EditText>(R.id.companyS_contact_number).text.toString().isEmpty() ||
+                findViewById<EditText>(R.id.companyS_email).text.toString().isEmpty())
     }
 }

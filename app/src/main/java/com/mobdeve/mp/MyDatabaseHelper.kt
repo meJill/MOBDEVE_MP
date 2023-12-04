@@ -12,7 +12,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     companion object {
         private const val DATABASE_NAME = "mydatabase"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 7
     }
 
     // Define the columns for the Job table
@@ -176,9 +176,60 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     fun getCompanyByName(companyName: String): Company? {
         val db = readableDatabase
-        val columns = arrayOf("id", "name", "password", "address", "number", "email")
+        val columns = arrayOf("id", "name", "password", "address", "contact", "email")
         val selection = "name = ?"
         val selectionArgs = arrayOf(companyName)
+
+        // Query the Company table to get the company with the specified name
+        val cursor = db.query(
+            "Company",
+            columns,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+
+        // Check if the cursor has a row
+        if (cursor.moveToFirst()) {
+            val idIndex = cursor.getColumnIndex("id")
+            val nameIndex = cursor.getColumnIndex("name")
+            val passwordIndex = cursor.getColumnIndex("password")
+            val addressIndex = cursor.getColumnIndex("address")
+            val contactIndex = cursor.getColumnIndex("contact")
+            val emailIndex = cursor.getColumnIndex("email")
+
+            // Create a Company object with the retrieved data
+            val company = Company(
+                id = cursor.getInt(idIndex),
+                name = cursor.getString(nameIndex),
+                password = cursor.getString(passwordIndex),
+                address = cursor.getString(addressIndex),
+                contact = cursor.getString(contactIndex),
+                email = cursor.getString(emailIndex)
+            )
+
+            // Close the cursor and the database
+            cursor.close()
+            db.close()
+
+            return company
+        } else {
+            // No company found with the specified name
+            // Close the cursor and the database
+            cursor.close()
+            db.close()
+
+            return null
+        }
+    }
+
+    fun getCompanyById(companyId: Int): Company? {
+        val db = readableDatabase
+        val columns = arrayOf("id", "name", "password", "address", "contact", "email")
+        val selection = "id = ?"
+        val selectionArgs = arrayOf(companyId.toString())
 
         // Query the Company table to get the company with the specified name
         val cursor = db.query(
@@ -293,10 +344,10 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         return matchFound
     }
 
-    fun deleteCompanyByName(companyName: String): Int {
+    fun deleteCompanyById(companyId: Int): Int {
         val db = writableDatabase
-        val whereClause = "name = ?"
-        val whereArgs = arrayOf(companyName)
+        val whereClause = "id = ?"
+        val whereArgs = arrayOf(companyId.toString())
 
         // Delete the row, returning the number of rows affected
         val rowsAffected = db.delete("Company", whereClause, whereArgs)

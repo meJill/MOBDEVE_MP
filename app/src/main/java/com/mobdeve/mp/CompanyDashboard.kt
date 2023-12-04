@@ -1,6 +1,5 @@
 package com.mobdeve.mp
 
-
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -31,7 +30,7 @@ class CompanyDashboard : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         // Call this function to show the dialog
-        showDialog()
+        // showDialog()
     }
 
     private fun showDialog() {
