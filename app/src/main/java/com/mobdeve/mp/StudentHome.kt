@@ -21,45 +21,39 @@ class StudentHome : AppCompatActivity() {
 
         bookmarkButton = findViewById(R.id.bookmark_floatingbutton)
 
-
+        val name = intent.getStringExtra("sName").toString()
         val args = Bundle()
-        args.putString("index", "hi")
+        args.putString("name", name)
         homeFragment.arguments = args
+
+        supportFragmentManager.registerFragmentLifecycleCallbacks(object: FragmentManager.FragmentLifecycleCallbacks() {
+            override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
+                if (f is homeFragment) {
+                    super.onFragmentResumed(fm, f)
+                    println("resumed")
+                    bookmarkButton.show()
+                }
+            }
+        }, false)
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, homeFragment)
             .commit()
 
         bookmarkButton.setOnClickListener {
-            replaceFragment(bookFragment)
+            replaceFragment(bookFragment, args)
         }
     }
 
 
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment, args: Bundle) {
+        fragment.arguments = args
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .addToBackStack("bookmarks")
+            .addToBackStack("bookmark")
             .commit()
-
-        supportFragmentManager.registerFragmentLifecycleCallbacks(object: FragmentManager.FragmentLifecycleCallbacks() {
-            override fun onFragmentCreated(
-                fm: FragmentManager,
-                f: Fragment,
-                savedInstanceState: Bundle?
-            ) {
-                super.onFragmentCreated(fm, f, savedInstanceState)
-                super.onFragmentPaused(fm, f)
-                println("created")
-                bookmarkButton.hide()
-            }
-
-            override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
-                super.onFragmentDestroyed(fm, f)
-                println("destroyed")
-                bookmarkButton.show()
-            }
-        }, true)
+        bookmarkButton.hide()
     }
 }

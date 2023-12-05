@@ -12,13 +12,12 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     companion object {
         private const val DATABASE_NAME = "mydatabase"
-        private const val DATABASE_VERSION = 11
+        private const val DATABASE_VERSION = 14
     }
 
     // Define the columns for the Job table
     private val createJobTableQuery = """
         CREATE TABLE IF NOT EXISTS Job (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
             company TEXT,
             name TEXT
         );
@@ -35,8 +34,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     // Define the columns for the Boomark table
     private val createBookmarkTableQuery = """
-        CREATE TABLE IF NOT EXISTS Student (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+        CREATE TABLE IF NOT EXISTS Bookmark (
             studentName TEXT,
             name TEXT
         );
@@ -130,6 +128,37 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         db.close()
 
         return matchFound
+    }
+
+    fun addBookmark(studentName: String, companyName: String): Long {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("studentName", studentName)
+            put("name", companyName)
+            // Add other fields as needed
+        }
+
+        // Insert the bookmark into the Bookmarks table
+        val newRowId = db.insert("Bookmark", null, values)
+
+        // Close the database
+        db.close()
+
+        return newRowId
+    }
+
+    fun deleteBookmark(studentName: String, companyName: String): Int {
+        val db = writableDatabase
+        val whereClause = "studentName = ? AND name = ?"
+        val whereArgs = arrayOf(studentName, companyName)
+
+        // Delete the bookmark from the Bookmarks table, returning the number of rows affected
+        val rowsAffected = db.delete("Bookmark", whereClause, whereArgs)
+
+        // Close the database
+        db.close()
+
+        return rowsAffected
     }
 
     fun addCompany(company: Company): Long {
@@ -327,16 +356,17 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         return companies
     }
 
-    fun getBookedCompanies(studentName: String): List<StudentPostModel> {
+    fun getBookedCompanies(sName: String): List<StudentPostModel> {
+        val bookedCompanies = mutableListOf<String>()
         val companies = mutableListOf<StudentPostModel>()
         val db = readableDatabase
-        val columns = arrayOf("id", "name", "address", "contact", "email")
-        val selection = "name = ?"
-        val selectionArgs = arrayOf(studentName)
+        val columns = arrayOf("name")
+        val selection = "studentName = ?"
+        val selectionArgs = arrayOf(sName)
 
         // Query the Company table to get all companies
         val cursor = db.query(
-            "Company",
+            "Bookmark",
             columns,
             selection,
             selectionArgs,
@@ -344,37 +374,17 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
             null,
             null)
 
-        // Iterate through the cursor to retrieve companies
         while (cursor.moveToNext()) {
             val nameIndex = cursor.getColumnIndex("name")
-            //val addressIndex = cursor.getColumnIndex("address")
-            val contactIndex = cursor.getColumnIndex("contact")
-            val emailIndex = cursor.getColumnIndex("email")
-
-            val jobs = getAllJobNamesForCompany(cursor.getString(nameIndex))
-            var jobN = ""
-
-            jobs.forEachIndexed() { i, element ->
-
-                if (i == 0) {
-                    jobN = element
-                } else {
-                    jobN = "$jobN, $element"
+            bookedCompanies.add(cursor.getString(nameIndex))
+        }
+        getAllCompanies().forEach { i ->
+            bookedCompanies.forEach { j ->
+                if (i.companyname == j) {
+                    companies.add(i)
                 }
             }
-            val postModel = StudentPostModel(
-                requirements = jobN,
-                phonenumber = cursor.getString(contactIndex),
-                email = cursor.getString(emailIndex),
-                companyname = cursor.getString(nameIndex)
-            )
-            companies.add(postModel)
         }
-
-        // Close the cursor and the database
-        cursor.close()
-        db.close()
-
         return companies
     }
 
@@ -512,14 +522,13 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
     }
     fun doesJobExist(jobName: String, companyName: String): Boolean {
         val db = readableDatabase
-        val columns = arrayOf("id")
         val selection = "name = ? AND company = ?"
         val selectionArgs = arrayOf(jobName, companyName)
 
         // Query the Job table to check if the job exists with the specified name and company
         val cursor = db.query(
             "Job",
-            columns,
+            null,
             selection,
             selectionArgs,
             null,

@@ -32,6 +32,7 @@ class StudentLogin : AppCompatActivity() {
             if (dbHelper.isUsernamePasswordMatch(findViewById<EditText>(R.id.studentL_Username).text.toString(), findViewById<EditText>(R.id.studentL_Password).text.toString())) {
                 println("it worked")
                 val intent = Intent(this, StudentHome::class.java)
+                intent.putExtra("sName", findViewById<EditText>(R.id.studentL_Username).text.toString())
                 startActivity(intent)
             } else
                 println("no it didnt")

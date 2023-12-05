@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class StudentAdapter(private val data: ArrayList<StudentPostModel>, private val context: Context) : RecyclerView.Adapter<StudentViewHolder>()  {
+class StudentAdapter(private val data: ArrayList<StudentPostModel>, private val context: Context, private val name: String) : RecyclerView.Adapter<StudentViewHolder>()  {
 
-    val hi :String = "hi"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
 
         val infalter = LayoutInflater.from(parent.context)
@@ -18,20 +17,25 @@ class StudentAdapter(private val data: ArrayList<StudentPostModel>, private val 
     }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        // Please note that bindData is a function we created to adhere to encapsulation. There are
-        // many ways to implement the binding of data.
         holder.bindData(data.get(position))
+        val dbHelper = MyDatabaseHelper(context)
+        dbHelper.getBookedCompanies(name).forEach { i ->
+            if (i.companyname == holder.companyname.text) {
+                holder.booked.isChecked = true
+            }
+        }
         holder.booked.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 println("YES")
+                dbHelper.addBookmark(name, holder.companyname.text.toString())
             } else {
                 println("NO")
+                dbHelper.deleteBookmark(name, holder.companyname.text.toString())
             }
         }
     }
 
     override fun getItemCount(): Int {
-        // This needs to be modified, so don't forget to add this in.
         return data.size
     }
 }

@@ -28,8 +28,6 @@ class StudentViewHolder(itemView: View): ViewHolder(itemView) {
     val companyname: TextView = itemView.findViewById(R.id.company_name)
     val booked: Switch = itemView.findViewById(R.id.switchB)
 
-    private val accountImageIv: ImageView = itemView.findViewById(R.id.accountImageIv)
-
     //    private val task: TextView = itemView.findViewById(R.id.taskView)
     //    private val status:TextView = itemView.findViewById(R.id.Status)
     //    private val status: Boolean = (R.id.button)

@@ -33,7 +33,6 @@ class CompanyAdd: AppCompatActivity(){
                 showToast("Job already exists!")
             } else {
                 val job = Job(
-                    id = 1,
                     company = name.toString(),
                     name = findViewById<EditText>(R.id.job_text_company).text.toString(),
                 )
