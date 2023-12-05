@@ -15,6 +15,7 @@ class StudentHome : AppCompatActivity() {
     private lateinit var bookmarkButton: FloatingActionButton
     private val bookFragment = bookFragment() // Replace with your actual fragment class
     private val homeFragment = homeFragment()
+    private var frag : Fragment = null
 
     private var x1: Float = 0.toFloat()
     private var x2: Float = 0.toFloat()
@@ -34,7 +35,6 @@ class StudentHome : AppCompatActivity() {
         val args = Bundle()
         args.putString("name", name)
         homeFragment.arguments = args
-
         supportFragmentManager.registerFragmentLifecycleCallbacks(object: FragmentManager.FragmentLifecycleCallbacks() {
             override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
                 if (f is homeFragment) {
@@ -53,11 +53,7 @@ class StudentHome : AppCompatActivity() {
             replaceFragment(bookFragment, args)
         }
     }
-
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        onTouchEvent(ev)
-        return super.dispatchTouchEvent(ev)
-    }
+    
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action) {
