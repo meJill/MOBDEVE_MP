@@ -53,6 +53,12 @@ class StudentHome : AppCompatActivity() {
             replaceFragment(bookFragment, args)
         }
     }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        onTouchEvent(ev)
+        return super.dispatchTouchEvent(ev)
+    }
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> x1 = event.x
