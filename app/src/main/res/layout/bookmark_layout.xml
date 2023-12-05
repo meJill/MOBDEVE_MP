@@ -11,16 +11,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/dark_green">
+        android:background="@color/dark_green"
+        android:orientation="vertical">
 
         <TextView
-            android:paddingLeft="10dp"
             android:id="@+id/company_name"
-            android:fontFamily="@font/bauhaus_93"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/bauhaus_93"
+            android:paddingLeft="10dp"
             android:text="Company Name"
             android:textAlignment="viewStart"
             android:textAllCaps="true"
@@ -34,12 +34,12 @@
 
             <TextView
                 android:id="@+id/email_text"
-                android:fontFamily="@font/bauhaus_93"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="10dp"
                 android:text="Email"
-                android:textColor="@color/middle_green"
-                android:paddingLeft="10dp"/>
+                android:textColor="@color/middle_green" />
 
             <TextView
                 android:id="@+id/email"
@@ -58,14 +58,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/jobs_text"
-                android:fontFamily="@font/bauhaus_93"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="10dp"
                 android:text="Jobs"
-                android:textColor="@color/middle_green"
-                android:paddingLeft="10dp"/>
+                android:textColor="@color/middle_green" />
 
             <TextView
                 android:id="@+id/jobs"
@@ -86,12 +87,13 @@
 
             <TextView
                 android:id="@+id/phone_number_text"
-                android:fontFamily="@font/bauhaus_93"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="10dp"
                 android:text="Phone Number"
-                android:textColor="@color/middle_green"
-                android:paddingLeft="10dp"/>
+                android:textColor="@color/middle_green" />
+
             <TextView
                 android:id="@+id/phone_number"
                 android:layout_width="wrap_content"
@@ -108,14 +110,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/address_text"
-                android:fontFamily="@font/bauhaus_93"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="10dp"
                 android:text="Address"
-                android:textColor="@color/middle_green"
-                android:paddingLeft="10dp"/>
+                android:textColor="@color/middle_green" />
+
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
