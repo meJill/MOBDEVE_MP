@@ -15,7 +15,6 @@ class StudentHome : AppCompatActivity() {
     private lateinit var bookmarkButton: FloatingActionButton
     private val bookFragment = bookFragment() // Replace with your actual fragment class
     private val homeFragment = homeFragment()
-    private var frag : Fragment = null
 
     private var x1: Float = 0.toFloat()
     private var x2: Float = 0.toFloat()
