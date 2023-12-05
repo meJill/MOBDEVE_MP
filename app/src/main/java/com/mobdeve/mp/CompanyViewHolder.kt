@@ -1,13 +1,9 @@
 package com.mobdeve.mp
 
-import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.mobdeve.mp.PostModel
-import com.mobdeve.mp.R
 
 
 /*

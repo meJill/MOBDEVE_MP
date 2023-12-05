@@ -7,13 +7,12 @@ import android.content.ContentValues
 import com.mobdeve.mp.Models.Company
 import com.mobdeve.mp.Models.Job
 import com.mobdeve.mp.Models.Student
-import kotlin.math.min
 
 class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         private const val DATABASE_NAME = "mydatabase"
-        private const val DATABASE_VERSION = 9
+        private const val DATABASE_VERSION = 11
     }
 
     // Define the columns for the Job table
@@ -30,8 +29,16 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         CREATE TABLE IF NOT EXISTS Student (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
-            password TEXT,
-            bookmarks TEXT  -- Assuming you store bookmarks as a JSON string
+            password TEXT
+        );
+    """.trimIndent()
+
+    // Define the columns for the Boomark table
+    private val createBookmarkTableQuery = """
+        CREATE TABLE IF NOT EXISTS Student (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            studentName TEXT,
+            name TEXT
         );
     """.trimIndent()
 
@@ -52,6 +59,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         db.execSQL(createJobTableQuery)
         db.execSQL(createStudentTableQuery)
         db.execSQL(createCompanyTableQuery)
+        db.execSQL(createBookmarkTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -59,6 +67,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         db.execSQL("DROP TABLE IF EXISTS Job")
         db.execSQL("DROP TABLE IF EXISTS Student")
         db.execSQL("DROP TABLE IF EXISTS Company")
+        db.execSQL("DROP TABLE IF EXISTS Bookmark")
         onCreate(db)
     }
 
@@ -67,8 +76,6 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         val values = ContentValues().apply {
             put("name", student.name)
             put("password", student.password)
-            // Assuming bookmarks are stored as a JSON string for simplicity
-            put("bookmarks", student.bookmarks.toString())
         }
 
         // Insert the new row, returning the primary key value of the new row
@@ -278,8 +285,8 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         }
     }
 
-    fun getAllCompanies(): List<PostModel> {
-        val companies = mutableListOf<PostModel>()
+    fun getAllCompanies(): List<StudentPostModel> {
+        val companies = mutableListOf<StudentPostModel>()
         val db = readableDatabase
         val columns = arrayOf("id", "name", "password", "address", "contact", "email")
 
@@ -289,22 +296,22 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         // Iterate through the cursor to retrieve companies
         while (cursor.moveToNext()) {
             val nameIndex = cursor.getColumnIndex("name")
-            val addressIndex = cursor.getColumnIndex("address")
+            //val addressIndex = cursor.getColumnIndex("address")
             val contactIndex = cursor.getColumnIndex("contact")
             val emailIndex = cursor.getColumnIndex("email")
 
-            var jobs = getAllJobNamesForCompany(cursor.getString(nameIndex))
-            var jobN: String = ""
+            val jobs = getAllJobNamesForCompany(cursor.getString(nameIndex))
+            var jobN = ""
 
             jobs.forEachIndexed() { i, element ->
 
                 if (i == 0) {
                     jobN = element
                 } else {
-                    jobN = jobN + ", " + element
+                    jobN = "$jobN, $element"
                 }
             }
-            val postModel = PostModel(
+            val postModel = StudentPostModel(
                 requirements = jobN,
                 phonenumber = cursor.getString(contactIndex),
                 email = cursor.getString(emailIndex),

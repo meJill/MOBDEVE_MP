@@ -1,6 +1,6 @@
 package com.mobdeve.mp
 
-class PostModel (
+class StudentPostModel (
 
     val requirements: String, //this being jobs
     val phonenumber: String?,

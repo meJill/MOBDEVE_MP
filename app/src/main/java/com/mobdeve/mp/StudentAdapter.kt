@@ -1,24 +1,32 @@
 package com.mobdeve.mp
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val data: ArrayList<PostModel>) : RecyclerView.Adapter<PostViewHolder>()  {
+class StudentAdapter(private val data: ArrayList<StudentPostModel>) : RecyclerView.Adapter<StudentViewHolder>()  {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
 
         val infalter = LayoutInflater.from(parent.context)
 
         val view = infalter.inflate(R.layout.vertical_layout, parent, false)
 
-        return PostViewHolder(view)
+        return StudentViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         // Please note that bindData is a function we created to adhere to encapsulation. There are
         // many ways to implement the binding of data.
         holder.bindData(data.get(position))
+        holder.booked.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                println("YES")
+            } else {
+                println("NO")
+            }
+        }
     }
 
     override fun getItemCount(): Int {

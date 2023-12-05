@@ -1,14 +1,12 @@
 package com.mobdeve.mp
 
-import com.mobdeve.mp.Models.Company
-
-class DataHelper {
+class StudentDataHelper {
     companion object{
-        fun studentData(companyNames: List<PostModel>): ArrayList<PostModel> {
-            val data = ArrayList<PostModel>()
+        fun studentData(companyNames: List<StudentPostModel>): ArrayList<StudentPostModel> {
+            val data = ArrayList<StudentPostModel>()
             companyNames.forEach { i ->
                 data.add(
-                    PostModel(
+                    StudentPostModel(
                         i.requirements.toString(),
                         i.phonenumber.toString(),
                         i.email.toString(),

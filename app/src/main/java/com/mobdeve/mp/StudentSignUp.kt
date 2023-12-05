@@ -25,7 +25,6 @@ class StudentSignUp : AppCompatActivity() {
                 id = 1,
                 name = findViewById<EditText>(R.id.studentS_username).text.toString(),
                 password = findViewById<EditText>(R.id.studentS_password).text.toString(),
-                bookmarks = arrayListOf() //arrayListOf(Job(id = 1, company = "ABC Corp", name = "Software Engineer"))
             )
 
             val dbHelper = MyDatabaseHelper(this)
