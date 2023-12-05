@@ -23,6 +23,7 @@ class homeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        println(arguments?.getString("index"))
         val dbHelper = MyDatabaseHelper(requireContext())
         val data: ArrayList<StudentPostModel>  = StudentDataHelper.studentData(dbHelper.getAllCompanies())
 
@@ -30,7 +31,7 @@ class homeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerView = view.findViewById(R.id.horizontalRv)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = StudentAdapter(data)
+        adapter = StudentAdapter(data, requireContext())
         recyclerView.adapter = adapter
         return view
     }

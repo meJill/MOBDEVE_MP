@@ -288,10 +288,61 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
     fun getAllCompanies(): List<StudentPostModel> {
         val companies = mutableListOf<StudentPostModel>()
         val db = readableDatabase
-        val columns = arrayOf("id", "name", "password", "address", "contact", "email")
+        val columns = arrayOf("id", "name", "address", "contact", "email")
 
         // Query the Company table to get all companies
         val cursor = db.query("Company", columns, null, null, null, null, null)
+
+        // Iterate through the cursor to retrieve companies
+        while (cursor.moveToNext()) {
+            val nameIndex = cursor.getColumnIndex("name")
+            //val addressIndex = cursor.getColumnIndex("address")
+            val contactIndex = cursor.getColumnIndex("contact")
+            val emailIndex = cursor.getColumnIndex("email")
+
+            val jobs = getAllJobNamesForCompany(cursor.getString(nameIndex))
+            var jobN = ""
+
+            jobs.forEachIndexed() { i, element ->
+
+                if (i == 0) {
+                    jobN = element
+                } else {
+                    jobN = "$jobN, $element"
+                }
+            }
+            val postModel = StudentPostModel(
+                requirements = jobN,
+                phonenumber = cursor.getString(contactIndex),
+                email = cursor.getString(emailIndex),
+                companyname = cursor.getString(nameIndex)
+            )
+            companies.add(postModel)
+        }
+
+        // Close the cursor and the database
+        cursor.close()
+        db.close()
+
+        return companies
+    }
+
+    fun getBookedCompanies(studentName: String): List<StudentPostModel> {
+        val companies = mutableListOf<StudentPostModel>()
+        val db = readableDatabase
+        val columns = arrayOf("id", "name", "address", "contact", "email")
+        val selection = "name = ?"
+        val selectionArgs = arrayOf(studentName)
+
+        // Query the Company table to get all companies
+        val cursor = db.query(
+            "Company",
+            columns,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null)
 
         // Iterate through the cursor to retrieve companies
         while (cursor.moveToNext()) {

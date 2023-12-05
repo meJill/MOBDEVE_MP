@@ -28,7 +28,7 @@ class bookFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerView = view.findViewById(R.id.horizontalRv)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = StudentAdapter(data)
+        adapter = StudentAdapter(data, requireContext())
         recyclerView.adapter = adapter
         return view
     }

@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class StudentAdapter(private val data: ArrayList<StudentPostModel>) : RecyclerView.Adapter<StudentViewHolder>()  {
+class StudentAdapter(private val data: ArrayList<StudentPostModel>, private val context: Context) : RecyclerView.Adapter<StudentViewHolder>()  {
 
+    val hi :String = "hi"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
 
         val infalter = LayoutInflater.from(parent.context)
