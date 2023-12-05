@@ -32,7 +32,6 @@
         <activity android:name=".StudentLogin" />
         <activity android:name=".CompanyLogin" />
         <activity android:name=".Bookmarks" />
-        <activity android:name=".Home"/>
         <activity android:name=".StudentSignUp"/>
         <activity android:name=".CompanySignUp"/>
         <activity android:name=".CompanyAdd"/>
