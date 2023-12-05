@@ -37,7 +37,7 @@ class CompanyAdd: AppCompatActivity(){
                     name = findViewById<EditText>(R.id.job_text_company).text.toString(),
                 )
                 dbHelper.addJob(job)
-                val message = "Username: $postedReqs\n"
+                val message = "Added: $postedReqs\n"
                 showToast(message)
             }
         }

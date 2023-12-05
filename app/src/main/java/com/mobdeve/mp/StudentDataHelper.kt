@@ -10,7 +10,9 @@ class StudentDataHelper {
                         i.requirements.toString(),
                         i.phonenumber.toString(),
                         i.email.toString(),
-                        i.companyname.toString()
+                        i.companyname.toString(),
+                        i.address.toString()
+
                     )
                 )
             }

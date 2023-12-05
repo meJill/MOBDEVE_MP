@@ -27,6 +27,7 @@ class StudentViewHolder(itemView: View): ViewHolder(itemView) {
     val email: TextView = itemView.findViewById(R.id.email)
     val companyname: TextView = itemView.findViewById(R.id.company_name)
     val booked: Switch = itemView.findViewById(R.id.switchB)
+    val address: TextView = itemView.findViewById(R.id.address)
 
     //    private val task: TextView = itemView.findViewById(R.id.taskView)
     //    private val status:TextView = itemView.findViewById(R.id.Status)
@@ -37,6 +38,7 @@ class StudentViewHolder(itemView: View): ViewHolder(itemView) {
         phonenumber.text = post.phonenumber
         email.text = post.email
         companyname.text = post.companyname
+        address.text = post.address
 
     }
 }

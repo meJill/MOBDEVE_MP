@@ -328,7 +328,7 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
             //val addressIndex = cursor.getColumnIndex("address")
             val contactIndex = cursor.getColumnIndex("contact")
             val emailIndex = cursor.getColumnIndex("email")
-
+            val addressIndex = cursor.getColumnIndex("address")
             val jobs = getAllJobNamesForCompany(cursor.getString(nameIndex))
             var jobN = ""
 
@@ -344,7 +344,8 @@ class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NA
                 requirements = jobN,
                 phonenumber = cursor.getString(contactIndex),
                 email = cursor.getString(emailIndex),
-                companyname = cursor.getString(nameIndex)
+                companyname = cursor.getString(nameIndex),
+                address = cursor.getString(addressIndex)
             )
             companies.add(postModel)
         }

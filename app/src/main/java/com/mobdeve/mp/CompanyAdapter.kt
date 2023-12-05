@@ -14,7 +14,7 @@ class CompanyAdapter(private val data: ArrayList<CompanyPostModel>, private val 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
 
         val infalter = LayoutInflater.from(parent.context)
-        val newview = infalter.inflate(R.layout.horizontal_layout, parent, false)
+        val newview = infalter.inflate(R.layout.refactor_layout, parent, false)
         val holder = CompanyViewHolder(newview)
 
         return holder

@@ -11,7 +11,7 @@ class StudentAdapter(private val data: ArrayList<StudentPostModel>, private val 
 
         val infalter = LayoutInflater.from(parent.context)
 
-        val view = infalter.inflate(R.layout.vertical_layout, parent, false)
+        val view = infalter.inflate(R.layout.bookmark_layout, parent, false)
 
         return StudentViewHolder(view)
     }
