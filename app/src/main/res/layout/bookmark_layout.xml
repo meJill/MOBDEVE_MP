@@ -5,155 +5,138 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
+
     android:padding="5dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="396dp"
-        android:layout_height="277dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:background="@color/dark_green">
 
         <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Email"
-            android:textAllCaps="false"
-            android:textColor="@color/light_green"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Email"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/phone_number" />
-
-        <TextView
+            android:paddingLeft="10dp"
             android:id="@+id/company_name"
-            android:layout_width="268dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/bauhaus_93"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Company Name"
             android:textAlignment="viewStart"
             android:textAllCaps="true"
             android:textColor="@color/brown"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.119"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="34sp" />
 
-        <TextView
-            android:id="@+id/jobs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Jobs"
-            android:textColor="@color/light_green"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/phone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Phone Number"
-            android:textColor="@color/light_green"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView6" />
+            <TextView
+                android:id="@+id/email_text"
+                android:fontFamily="@font/bauhaus_93"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/middle_green"
+                android:paddingLeft="10dp"/>
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Address"
-            android:textAllCaps="false"
-            android:textColor="@color/light_green"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address_text" />
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="20dp"
+                android:text="Email"
+                android:textAllCaps="false"
+                android:textColor="@color/light_green"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/address_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="88dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Address"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/phone_number" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/jobs_text"
+                android:fontFamily="@font/bauhaus_93"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jobs"
+                android:textColor="@color/middle_green"
+                android:paddingLeft="10dp"/>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="56dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Roles"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/jobs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="20dp"
+                android:text="Jobs"
+                android:textColor="@color/light_green"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/bauhaus_93"
-            android:text="Phone Number"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/jobs" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/phone_number_text"
+                android:fontFamily="@font/bauhaus_93"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textColor="@color/middle_green"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:id="@+id/phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="20dp"
+                android:text="Phone Number"
+                android:textColor="@color/light_green"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/address_text"
+                android:fontFamily="@font/bauhaus_93"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="@color/middle_green"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bauhaus_93"
+                android:paddingLeft="20dp"
+                android:text="Address"
+                android:textAllCaps="false"
+                android:textColor="@color/light_green"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <Switch
             android:id="@+id/switchB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/bauhaus_93"
             android:text="Bookmark"
-            android:textColor="@color/light_green"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.871" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="@color/light_green" />
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
