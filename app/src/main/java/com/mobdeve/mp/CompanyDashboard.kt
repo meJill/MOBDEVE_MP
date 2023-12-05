@@ -2,6 +2,7 @@ package com.mobdeve.mp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -9,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class CompanyDashboard : AppCompatActivity() {
-
+    private var x1: Float = 0.toFloat()
+    private var x2: Float = 0.toFloat()
+    private val MIN_DISTANCE = 150
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CompanyAdapter
 //    private val data: ArrayList<CompanyPostModel> = CompanyDataHelper.initializeData()
@@ -49,4 +52,20 @@ class CompanyDashboard : AppCompatActivity() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> x1 = event.x
+            MotionEvent.ACTION_UP -> {
+                x2 = event.x
+                val deltaX = x2 - x1
+                if (Math.abs(deltaX) > MIN_DISTANCE) {
+                    if (x2 > x1) {
+                        onBackPressed()
+                    }
+                }
+            }
+        }
+        return super.onTouchEvent(event)
+    }
+
 }

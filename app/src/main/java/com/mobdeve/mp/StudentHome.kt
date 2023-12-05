@@ -2,6 +2,7 @@ package com.mobdeve.mp
 
 import android.content.Context
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -15,7 +16,15 @@ class StudentHome : AppCompatActivity() {
     private val bookFragment = bookFragment() // Replace with your actual fragment class
     private val homeFragment = homeFragment()
 
+    private var x1: Float = 0.toFloat()
+    private var x2: Float = 0.toFloat()
+    private val MIN_DISTANCE = 150
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home)
 
@@ -44,7 +53,21 @@ class StudentHome : AppCompatActivity() {
             replaceFragment(bookFragment, args)
         }
     }
-
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> x1 = event.x
+            MotionEvent.ACTION_UP -> {
+                x2 = event.x
+                val deltaX = x2 - x1
+                if (Math.abs(deltaX) > MIN_DISTANCE) {
+                    if (x2 > x1) {
+                        onBackPressed()
+                    }
+                }
+            }
+        }
+        return super.onTouchEvent(event)
+    }
 
     private fun replaceFragment(fragment: Fragment, args: Bundle) {
         fragment.arguments = args
@@ -56,4 +79,5 @@ class StudentHome : AppCompatActivity() {
             .commit()
         bookmarkButton.hide()
     }
+
 }

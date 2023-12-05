@@ -34,4 +34,5 @@ class bookFragment : Fragment() {
         recyclerView.adapter = adapter
         return view
     }
+
 }
