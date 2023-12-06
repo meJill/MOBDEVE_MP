@@ -32,7 +32,7 @@ class CompanyAdd: AppCompatActivity(){
 
             // Check if both username and password fields are not empty
             if (postedReqs.isEmpty()) {
-                showToast("Please enter a name")
+                showToast("Please enter a job")
             } else if (dbHelper.doesJobExist(postedReqs, name.toString())) {
                 showToast("Job already exists!")
             } else {
